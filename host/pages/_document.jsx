@@ -1,15 +1,16 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-import remotes from "../next.remotes.json";
+// import remotes from "../next.remotes.json";
 
-const RemoteTags = () => {
-    return remotes.map((remote, i) => {
-        console.log(`Loading Remote: ${remote.name}`);
-        return <script key={i} src={remote.url}></script>
-    });
-}
+// const RemoteTags = () => {
+//     return remotes.map((remote, i) => {
+//         console.log(`Loading Remote: ${remote.name}`);
+//         return <script key={i} src={remote.url}></script>
+//     });
+// }
 
 class MyDocument extends Document {
+
     static async getInitialProps(ctx) {
         const initialProps = await Document.getInitialProps(ctx);
         return { ...initialProps };
@@ -38,8 +39,11 @@ class MyDocument extends Document {
             <Html>
                 <Head />
                 <body>
+                    <script src="http://localhost:3001/remote.js"></script>
+                    <script src="http://localhost:3002/remote.js"></script>
+                    <script src="http://localhost:3003/remote.js"></script>
                     <Main />
-                    <RemoteTags />
+                    {/* <RemoteTags /> */}
                     <NextScript />
                 </body>
             </Html>

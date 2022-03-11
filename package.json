@@ -1,35 +1,33 @@
 {
-  "name": "nextjs-react",
+  "name": "microfrontends-nextjs-react",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Microfrontends using a NextJS Host and React remotes",
   "scripts": {
     "install": "concurrently \"npm run install:host\" \"npm run install:home\" \"npm run install:profile\" \"npm run install:sample\"",
-    "install:host": "cd host & npm install",
-    "install:home": "cd remotes && cd home && npm install",
-    "install:sample": "cd remotes && cd sample && npm install",
-    "install:profile": "cd remotes && cd profile && npm install",
-    
     "start": "concurrently \"npm run start:home\" \"npm run start:sample\" \"npm run start:profile\" \"npm run start:host\"",
-    "start:host": "cd host && npm run dev",
-    "start:home": "cd remotes && cd home && npm start",
-    "start:sample": "cd remotes && cd sample && npm start",
-    "start:profile": "cd remotes && cd profile && npm start",
-    
     "build": "",
+
+    "install:host": "cd host & npm install",
+    "start:host": "cd host && npm run dev",
     "build:host": "cd host && npm run build",
+
+    "install:home": "cd remotes && cd home && npm install",
+    "start:home": "cd remotes && cd home && npm start",
     "build:home": "cd remotes && cd home && npm run build",
+
+    "install:sample": "cd remotes && cd sample && npm install",
+    "start:sample": "cd remotes && cd sample && npm start",
     "build:sample": "cd remotes && cd sample && npm run build",
+
+    "install:profile": "cd remotes && cd profile && npm install",
+    "start:profile": "cd remotes && cd profile && npm start",
     "build:profile": "cd remotes && cd profile && npm run build",
 
     "container:build": "docker build -t cfryerdev/microsite-example:latest .",
-    "container:run": "docker run -p 8080:80 --name local-dev cfryerdev/microsite-example",
-
-    "install:remote": "cd remotes && cd $npm_config_name && npm install",
-    "start:remote": "cd remotes && cd $npm_config_name && npm start",
-    "build:remote": "cd remotes && cd $npm_config_name && npm run build"
+    "container:run": "docker run -p 8080:80 --name local-dev cfryerdev/microsite-example"
   },
   "keywords": [],
+  "author": "Chris Fryer <cfryerdev@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "concurrently": "^7.0.0"

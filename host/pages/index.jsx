@@ -21,7 +21,7 @@ const IndexPage = () => {
           Check out remotes here: <br /><br />
           <div>• <Link href="/dashboard"><a>Dashboard Remote App (React - Host Layout)</a></Link></div>
           <div>• <Link href="/sample"><a>Sample Remote App (React - Host Layout)</a></Link></div>
-          <div>• <Link href="/profile"><a>Profile Remote App (Typescript - No Layout)</a></Link></div>
+          <div>• <Link href="/profile"><a>Profile Remote App (Typescript - Remote Layout)</a></Link></div>
         </p>
       </div>
     </>
