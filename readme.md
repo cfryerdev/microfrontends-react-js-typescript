@@ -5,16 +5,17 @@ Note: This solution architecture is for use with a mono repo only.
 
 ## Structure
 
+For now we will keep the structure loose and simple:
+
 ```
-├─── 📁 host                > NextJS Host
+├─── 📁 host                > NextJS Host & Routing
 │
-├─── 📁 remotes             > React Remotes
-│    ├─── 📁 home
-│    └─── 📁 sample
-│         ├─── 📝health.ts
-│         └─── 📝version.ts
+├─── 📁 remotes
+│    ├─── 📁 home           > React Remote using JSX
+│    ├─── 📁 profile        > React Remote using Typescript
+│    └─── 📁 sample         > React Remote using JSX
 │
-├─── 📁 shared
+├─── 📁 shared              > Packages and components shared across remotes
 ```
 
 ## What are hosts and remotes?
