@@ -1,0 +1,38 @@
+{
+  "name": "nextjs-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "concurrently \"npm run install:host\" \"npm run install:home\" \"npm run install:profile\" \"npm run install:sample\"",
+    "install:host": "cd host & npm install",
+    "install:home": "cd remotes; cd home; npm install",
+    "install:sample": "cd remotes; cd sample; npm install",
+    "install:profile": "cd remotes; cd profile; npm install",
+    
+    "start": "concurrently \"npm run start:home\" \"npm run start:sample\" \"npm run start:profile\" \"npm run start:host\"",
+    "start:host": "cd host && npm run dev",
+    "start:home": "cd remotes && cd home && npm start",
+    "start:sample": "cd remotes && cd sample && npm start",
+    "start:profile": "cd remotes && cd profile && npm start",
+    
+    "build": "",
+    "build:host": "cd host && npm run build",
+    "build:home": "cd remotes && cd home && npm run build",
+    "build:sample": "cd remotes && cd sample && npm run build",
+    "build:profile": "cd remotes && cd profile && npm run build",
+
+    "container:build": "docker build -t cfryerdev/microsite-example:latest .",
+    "container:run": "docker run -p 8080:80 --name local-dev cfryerdev/microsite-example",
+
+    "install:remote": "cd remotes && cd $npm_config_name && npm install",
+    "start:remote": "cd remotes && cd $npm_config_name && npm start",
+    "build:remote": "cd remotes && cd $npm_config_name && npm run build"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  },
+  "devDependencies": { }
+}
