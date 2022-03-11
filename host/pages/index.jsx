@@ -1,7 +1,11 @@
 import Link from 'next/link';
+import Layout from "../layout";
 
-export default function Home() {
-  return (
+const IndexPage = () => {
+  const getLayout = (page) => {
+    return <Layout>{page}</Layout>
+  };
+  return getLayout(
     <>
       <ol className="breadcrumb">
         <li className="breadcrumb-item active">Home</li>
@@ -15,11 +19,13 @@ export default function Home() {
         </p>
         <p>
           Check out remotes here: <br /><br />
-          <div>• <Link href="/dashboard"><a>Dashboard Remote App</a></Link></div>
-          <div>• <Link href="/sample"><a>Sample Remote App</a></Link></div>
-          <div>• <Link href="/profile"><a>Profile Remote App (Typescript)</a></Link></div>
+          <div>• <Link href="/dashboard"><a>Dashboard Remote App (React - Host Layout)</a></Link></div>
+          <div>• <Link href="/sample"><a>Sample Remote App (React - Host Layout)</a></Link></div>
+          <div>• <Link href="/profile"><a>Profile Remote App (Typescript - No Layout)</a></Link></div>
         </p>
       </div>
     </>
   )
 }
+
+export default IndexPage;

@@ -8,8 +8,4 @@ const ProfileRemote = dynamic(() => import("remote_profile/Application"), {
 
 const ProfilePage = () => (<ProfileRemote />);
 
-// ProfilePage.getLayout = function getLayout(page) {
-//     return <CustomLayout>page</CustomLayout>
-// }
-
 export default ProfilePage;

@@ -8,7 +8,9 @@ Note: This solution architecture is for use with a mono repo only.
 For now we will keep the structure loose and simple:
 
 ```
-├─── 📁 host                > NextJS Host & Routing
+├─── 📁 host                > NextJS Host
+│    ├─── 📁 layout         > Shared layout
+│    └─── 📁 pages          > Routing
 │
 ├─── 📁 remotes
 │    ├─── 📁 home           > React Remote using JSX

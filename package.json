@@ -6,9 +6,9 @@
   "scripts": {
     "install": "concurrently \"npm run install:host\" \"npm run install:home\" \"npm run install:profile\" \"npm run install:sample\"",
     "install:host": "cd host & npm install",
-    "install:home": "cd remotes; cd home; npm install",
-    "install:sample": "cd remotes; cd sample; npm install",
-    "install:profile": "cd remotes; cd profile; npm install",
+    "install:home": "cd remotes && cd home && npm install",
+    "install:sample": "cd remotes && cd sample && npm install",
+    "install:profile": "cd remotes && cd profile && npm install",
     
     "start": "concurrently \"npm run start:home\" \"npm run start:sample\" \"npm run start:profile\" \"npm run start:host\"",
     "start:host": "cd host && npm run dev",
