@@ -3,6 +3,11 @@ This is an example application using nextjs as a host, and create react applicat
 
 Note: This solution architecture is for use with a mono repo only.
 
+## TODO
+- Finish docker support
+- Pass props to remotes
+- Share state at host level to remotes
+
 ## Structure
 
 For now we will keep the structure loose and simple:
