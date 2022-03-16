@@ -1,4 +1,4 @@
-# Microsites using Module Federation and React
+# Microfrontends using Module Federation and React
 This is an example application using react (and webpoack) as a host, and create react application as remotes. These are dynamically resolved in each next page route, and defined either ssr true/false.
 
 Note: This solution architecture is for use with a mono repo only.
