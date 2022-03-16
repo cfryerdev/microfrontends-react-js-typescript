@@ -6,8 +6,9 @@
     "install": "concurrently \"npm run install:host\" \"npm run install:home\" \"npm run install:profile\" \"npm run install:sample\"",
     "start": "concurrently \"npm run start:home\" \"npm run start:profile\" \"npm run start:sample\" \"npm run start:host\"",
     "build": "",
-    "install:host": "cd host & npm install",
-    "start:host": "cd host && npm start",
+
+    "install:host": "cd host && npm install",
+    "start:host": "cd host && npm run dev",
     "build:host": "cd host && npm run build",
     "install:home": "cd remotes && cd home && npm install",
     "start:home": "cd remotes && cd home && npm start",
