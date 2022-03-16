@@ -1,5 +1,5 @@
 # Microsites using NextJs and React
-This is an example application using nextjs as a host, and create react application as remotes. These are dynamically resolved in each next page route, and defined either ssr true/false.
+This is an example application using react (and webpoack) as a host, and create react application as remotes. These are dynamically resolved in each next page route, and defined either ssr true/false.
 
 Note: This solution architecture is for use with a mono repo only.
 
@@ -14,7 +14,7 @@ Note: This solution architecture is for use with a mono repo only.
 For now we will keep the structure loose and simple:
 
 ```
-├─── 📁 host                > NextJS Host
+├─── 📁 host                > React Host
 │    ├─── 📁 layout         > Shared layout
 │    └─── 📁 pages          > Routing
 │
@@ -54,7 +54,7 @@ If you need to add a new remote, its quite easy.
 
 1) Create a new react application in the remotes folder.
 2) Create or copy your webpack config.
-3) Add your new remote to `host/next.remotes.json`.
+3) Add your new remote to `host/webpack.remotes.json`.
 4) Create a page route in `host` and inject your remote!
 5) Run your host using `npm start`.
 
