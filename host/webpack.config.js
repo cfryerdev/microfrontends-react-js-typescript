@@ -15,6 +15,9 @@ function getRemotesFromConfiguration () {
 module.exports = (env, argv) => {
 	return {
 		entry: "./src/index.ts",
+		output: {
+			publicPath: '/'
+		},
 		mode: process.env.NODE_ENV || "development",
 		devServer: {
 			port: 3000,
