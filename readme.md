@@ -4,10 +4,8 @@ This is an example application using react (and webpoack) as a host, and create 
 Note: This solution architecture is for use with a mono repo only.
 
 ## TODO
-- Promise based script loading and page blocking
 - Finish docker support
-- Pass props to remotes
-- Share state at host level to remotes
+- Share state at host level to remotes using context
 
 ## Structure
 
