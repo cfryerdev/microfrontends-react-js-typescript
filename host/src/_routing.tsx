@@ -5,12 +5,7 @@ import Dashboard from "./pages/dashboard";
 import Sample from "./pages/sample";
 import Profile from "./pages/profile";
 import Example from "./pages/example";
-
-const NotFound = () => (
-  <div className="text-center">
-    Oops, we could not find what you are looking for.
-  </div>
-);
+import NotFound from "./pages/404";
 
 const Routing = () => (
   <Routes>
