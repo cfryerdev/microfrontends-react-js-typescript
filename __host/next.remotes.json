@@ -1,5 +1,0 @@
-[
-    { "name": "remote_home", "url": "http://localhost:3001/remote.js" },
-    { "name": "remote_sample", "url": "http://localhost:3002/remote.js" },
-    { "name": "remote_profile", "url": "http://localhost:3003/remote.js" }
-]
