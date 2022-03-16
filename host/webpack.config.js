@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 const webpack = require("webpack");
 const { ModuleFederationPlugin } = webpack.container;
 const pkg = require("./package.json");
@@ -26,6 +27,9 @@ module.exports = (env, argv) => {
 		},
 		resolve: {
 			extensions: [".ts", ".tsx", ".js", ".jsx"],
+			alias: {
+				'@shared': path.resolve(__dirname, '../shared')
+			}
 		},
 		module: {
 			rules: [ 

@@ -1,4 +1,5 @@
 {
+	"extends": "./tsconfig.paths.json",
 	"compilerOptions": {
 		"target": "es5",
 		"lib": ["dom", "dom.iterable", "esnext"],
@@ -18,5 +19,5 @@
 		"noEmit": false,
 		"jsx": "react-jsx"
 	},
-	"include": ["src"]
+	"include": ["src", "../shared/contexts/account-context.tsx"]
 }
