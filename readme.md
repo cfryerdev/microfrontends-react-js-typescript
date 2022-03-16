@@ -1,4 +1,4 @@
-# Microsites using NextJs and React
+# Microsites using Module Federation and React
 This is an example application using react (and webpoack) as a host, and create react application as remotes. These are dynamically resolved in each next page route, and defined either ssr true/false.
 
 Note: This solution architecture is for use with a mono repo only.
@@ -57,6 +57,10 @@ If you need to add a new remote, its quite easy.
 5) Run your host using `npm start`.
 
 Thats it, you should be ready to go.
+
+## Deploying the remotes
+
+When we deploy the host to a container or app service, we rarely will need to re-deploy the host. This is because the host use http to resolve the remotes, so we simply need to deploy the remotes to a CDN. The host has config telling it where to get the remotes! Cool huh?
 
 ## Building and deploying the container
 
