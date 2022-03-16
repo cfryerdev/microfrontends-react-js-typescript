@@ -8,7 +8,7 @@
     "build": "",
 
     "install:host": "cd host && npm install",
-    "start:host": "cd host && npm run dev",
+    "start:host": "cd host && npm start",
     "build:host": "cd host && npm run build",
     "install:home": "cd remotes && cd home && npm install",
     "start:home": "cd remotes && cd home && npm start",
