@@ -1,18 +1,22 @@
 /** @type {import('next').NextConfig} */
 
 var remotes = require("./next.remotes.json");
+var url_rewrites = require("./next.rewrites.json");
 
-const getRemotesFromConfiguration = () => {
+function getRemotesFromConfiguration () {
   let obj = {};
-  remotes.forEach((rem) => { obj[rem.name] = rem.name; });
+  remotes.forEach((rem) => { obj[rem.name] = `${rem.name}@${rem.url}`; });
   return obj;
 };
 
 module.exports = {
+  async rewrites() { return url_rewrites },
+  
   webpack: (config, options) => {
     config.plugins.push(
       new options.webpack.container.ModuleFederationPlugin({
-        remoteType: "var",
+        name: "host",
+        //remoteType: "var",
         remotes: getRemotesFromConfiguration(),
         shared: {
           'react': {
@@ -31,4 +35,4 @@ module.exports = {
 
     return config;
   },
-}
+};

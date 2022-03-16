@@ -23,6 +23,8 @@ For now we will keep the structure loose and simple:
 │    ├─── 📁 profile        > React Remote using Typescript
 │    └─── 📁 sample         > React Remote using JSX
 │
+├─── 📁 service             > Backend-for-Frontend express api
+│
 ├─── 📁 shared              > Packages and components shared across remotes
 ```
 

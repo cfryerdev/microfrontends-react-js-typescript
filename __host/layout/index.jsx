@@ -6,7 +6,7 @@ import './index.module.css';
 const Layout = ({ children }) => {
   return (
     <>
-      <Header toggleMenu={() => {}} />
+      <Header />
       <div className="container mt-4">{children}</div>
     </>
   );

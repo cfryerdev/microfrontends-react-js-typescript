@@ -4,25 +4,20 @@
   "description": "Microfrontends using a NextJS Host and React remotes",
   "scripts": {
     "install": "concurrently \"npm run install:host\" \"npm run install:home\" \"npm run install:profile\" \"npm run install:sample\"",
-    "start": "concurrently \"npm run start:home\" \"npm run start:sample\" \"npm run start:profile\" \"npm run start:host\"",
+    "start": "concurrently \"npm run start:home\" \"npm run start:profile\" \"npm run start:sample\" \"npm run start:host\"",
     "build": "",
-
     "install:host": "cd host & npm install",
-    "start:host": "cd host && npm run dev",
+    "start:host": "cd host && npm start",
     "build:host": "cd host && npm run build",
-
     "install:home": "cd remotes && cd home && npm install",
     "start:home": "cd remotes && cd home && npm start",
     "build:home": "cd remotes && cd home && npm run build",
-
     "install:sample": "cd remotes && cd sample && npm install",
     "start:sample": "cd remotes && cd sample && npm start",
     "build:sample": "cd remotes && cd sample && npm run build",
-
     "install:profile": "cd remotes && cd profile && npm install",
     "start:profile": "cd remotes && cd profile && npm start",
     "build:profile": "cd remotes && cd profile && npm run build",
-
     "container:build": "docker build -t cfryerdev/microsite-example:latest .",
     "container:run": "docker run -p 8080:80 --name local-dev cfryerdev/microsite-example"
   },
@@ -30,7 +25,10 @@
   "author": "Chris Fryer <cfryerdev@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "concurrently": "^7.0.0"
+    "concurrently": "^7.0.0",
+    "nprogress": "^0.2.0"
   },
-  "devDependencies": { }
+  "devDependencies": {
+    "style-loader": "^3.3.1"
+  }
 }
