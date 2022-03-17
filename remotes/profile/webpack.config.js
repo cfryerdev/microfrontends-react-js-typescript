@@ -33,8 +33,8 @@ module.exports = {
 			name: "remote_profile",
 			filename: 'remote.js',
 			exposes: {
-        './Application': './src/_app',
-      },
+				'./Application': './src/_app',
+      			},
 			shared: {
 				...deps,
 				'react': {
