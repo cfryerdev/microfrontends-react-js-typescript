@@ -1,20 +1,27 @@
-import React from "react";
-
-import Footer from "../footer";
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { AccountContext } from "@shared/contexts/account-context";
+import Footer from "@shared/components/footer-component.jsx";
 
 interface LayoutProps {
   children: React.ReactNode
 }
 
-export default ({ children }: LayoutProps) => (
-  <>
-    <nav className="navbar navbar-expand-lg bg-primary">
-      <i className="fas fa-bars fa-lg sidemenu-toggle-icon"></i>
-      <a className="navbar-brand" href="/" style={{ color: '#fff' }}>Custom Header</a>
-    </nav>
-    <div className="container-fluid p-4">{ children }</div>
-    <Footer>
-      Custom footer here too.
-    </Footer>
-  </>
-);
+export default ({ children }: LayoutProps) => { 
+  const context = useContext(AccountContext);
+  return (
+    <>
+      <nav className="navbar navbar-expand-lg bg-primary">
+        <i className="fas fa-bars fa-lg sidemenu-toggle-icon"></i>
+        <NavLink className="navbar-brand" to="/" style={{ color: '#fff' }}>Custom Header</NavLink>
+      </nav>
+      <div className="container-fluid p-4">{ children }</div>
+      <Footer 
+        year={2022} 
+        name={'Microfrontends Example'} 
+        version={`1.0.2`} 
+        userName={context.getAccountDetails().username}
+      />
+    </>
+  );
+}

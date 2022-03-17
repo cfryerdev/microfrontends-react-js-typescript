@@ -47,6 +47,10 @@ $ npm start
 
 Now you may visit `http://localhost:3000` in a browser.
 
+## What is this shared directory?
+
+This is where we store functionality, modules, components, etc... that are shared across remotes. If it doesnt need to be shared, keep it within the remote.
+
 ## Adding a new remote
 If you need to add a new remote, its quite easy. 
 

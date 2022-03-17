@@ -6,7 +6,6 @@
     "install": "concurrently \"npm run install:host\" \"npm run install:home\" \"npm run install:profile\" \"npm run install:sample\"",
     "start": "concurrently \"npm run start:home\" \"npm run start:profile\" \"npm run start:sample\" \"npm run start:host\"",
     "build": "",
-
     "install:host": "cd host && npm install",
     "start:host": "cd host && npm start",
     "build:host": "cd host && npm run build",
@@ -26,10 +25,12 @@
   "author": "Chris Fryer <cfryerdev@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "concurrently": "^7.0.0",
-    "nprogress": "^0.2.0"
+    "concurrently": "^7.0.0"
   },
   "devDependencies": {
     "style-loader": "^3.3.1"
-  }
+  },
+  "workspaces": [
+    "shared"
+  ]
 }

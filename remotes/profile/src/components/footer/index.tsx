@@ -4,12 +4,10 @@ interface FooterProps {
   children: React.ReactNode
 }
 
-export default ({ children }: FooterProps) => (
-  <div style={{
-    padding: 20,
-    textAlign: 'center',
-    color: '#e2e2e2'
-  }}>
-    { children }
-  </div>
-);
+export default ({ children }: FooterProps) => {
+  return (
+    <div className="text-center text-muted">
+      { children }
+    </div>
+  );
+}

@@ -14,7 +14,7 @@ const IndexPage = () => {
           as remotes. These are dynamically resolved in each next page route, and defined either 
           ssr true/false.
         </div>
-        <div className="mb-4">
+        <div className="mt-4 mb-4">
           Check out remotes here: <br /><br />
           <div>• <NavLink to="/dashboard">Dashboard Remote App (React - Host Layout)</NavLink></div>
           <div>• <NavLink to="/sample/47">Sample Remote App (React - Host Layout)</NavLink></div>

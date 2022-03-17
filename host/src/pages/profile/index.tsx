@@ -5,10 +5,12 @@ import PageLoader from "../../components/page-loader";
 // @ts-ignore
 const ProfileRemote = React.lazy(() => import("remote_profile/Application"));
 
-const ProfilePage = () => (
-    <Suspense fallback={<PageLoader />}>
-        <ProfileRemote />
-    </Suspense>
-);
+const ProfilePage = () => {
+    return (
+        <Suspense fallback={<PageLoader />}>
+            <ProfileRemote />
+        </Suspense>
+    );
+}
 
 export default ProfilePage;

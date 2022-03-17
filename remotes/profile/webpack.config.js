@@ -12,6 +12,9 @@ module.exports = {
 	},
 	resolve: {
 		extensions: [".ts", ".tsx", ".js"],
+		alias: {
+			'@shared': path.resolve(__dirname, '../../shared')
+		}
 	},
 	output: {
 		publicPath: 'http://localhost:3003/',
