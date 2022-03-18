@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Microfrontends using a NextJS Host and React remotes",
   "scripts": {
-    "install": "concurrently \"npm run install:host\" \"npm run install:home\" \"npm run install:profile\" \"npm run install:sample\"",
-    "start": "concurrently \"npm run start:home\" \"npm run start:profile\" \"npm run start:sample\" \"npm run start:host\"",
+    "install": "concurrently \"npm run install:host\" \"npm run install:home\" \"npm run install:profile\" \"npm run install:sample\" \"npm run install:service\"",
+    "start": "concurrently \"npm run start:home\" \"npm run start:profile\" \"npm run start:sample\" \"npm run start:service\" \"npm run start:host\"",
     "build": "",
     "install:host": "cd host && npm install",
     "start:host": "cd host && npm start",
@@ -18,6 +18,8 @@
     "install:profile": "cd remotes && cd profile && npm install",
     "start:profile": "cd remotes && cd profile && npm start",
     "build:profile": "cd remotes && cd profile && npm run build",
+    "install:service": "cd service && npm install",
+    "start:service": "cd service && npm start",
     "container:build": "docker build -t cfryerdev/microsite-example:latest .",
     "container:run": "docker run -p 8080:80 --name local-dev cfryerdev/microsite-example"
   },
