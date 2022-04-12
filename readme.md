@@ -26,6 +26,11 @@ For now we will keep the structure loose and simple:
 ├─── 📁 shared              > Packages and components shared across remotes
 ```
 
+
+## Diagram
+
+ ![Diagram](docs/Diagram-Micro-Frontends.png)
+
 ## What are hosts and remotes?
 
 When we talk about micro-frontends or micro-sites, we often use words like HOST and REMOTE. A remote is a single page react application. A host is a parent application that ties all remotes together.
