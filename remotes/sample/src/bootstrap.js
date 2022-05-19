@@ -1,5 +1,7 @@
-import Sample from './_app';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import App from './_app';
+import * as ReactDOMClient from "react-dom/client";
 
-ReactDOM.render(<Sample />, document.getElementById('root'));
+const rootElement = document.getElementById("root");
+const root = ReactDOMClient.createRoot(rootElement);
+
+root.render(<App />);
