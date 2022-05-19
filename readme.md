@@ -29,7 +29,7 @@ For now we will keep the structure loose and simple:
 
 ## Diagram
 
- ![Diagram](docs/Diagram-Micro-Frontends.png)
+ ![Diagram](.docs/Diagram-Micro-Frontends.png)
 
 ## What are hosts and remotes?
 
@@ -61,7 +61,7 @@ If you need to add a new remote, its quite easy.
 
 1) Create a new react application in the remotes folder.
 2) Create or copy your webpack config.
-3) Add your new remote to `host/webpack.remotes.json`.
+3) Add your new remote to `host/.env`.
 4) Create a page route in `host` and inject your remote!
 5) Run your host using `npm start`.
 

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { AccountContext } from "@shared/contexts/account-context";
 import Footer from "@shared/components/footer-component.jsx";
 
 interface LayoutProps {
@@ -8,7 +7,6 @@ interface LayoutProps {
 }
 
 export default ({ children }: LayoutProps) => { 
-  const context = useContext(AccountContext);
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-primary">
@@ -20,7 +18,7 @@ export default ({ children }: LayoutProps) => {
         year={2022} 
         name={'Microfrontends Example'} 
         version={`1.0.2`} 
-        userName={context.getAccountDetails().username}
+        userName={''}
       />
     </>
   );

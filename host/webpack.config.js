@@ -1,3 +1,4 @@
+const env = require('dotenv').config();
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
@@ -5,11 +6,17 @@ const { ModuleFederationPlugin } = webpack.container;
 const pkg = require("./package.json");
 require("dotenv").config({ path: "./.env" });
 
-var remotes = require("./webpack.remotes.json");
+if (env && env.parsed) {
+	console.log('environment config:', env.parsed);
+}
 
 function getRemotesFromConfiguration () {
 	let obj = {};
-	remotes.forEach((rem) => { obj[rem.name] = `${rem.name}@${rem.url}`; });
+	var remotes = Object.entries(env.parsed);
+	remotes.forEach((rem) => { 
+		var name = rem[0].toLowerCase();
+		var url = rem[1];
+		obj[name] = `${name}@${url}`; });
 	return obj;
 };
 
