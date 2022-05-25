@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "vscode-icons-team.vscode-icons",
+    "orta.vscode-jest",
+    "formulahendry.auto-rename-tag",
+    "dbaeumer.vscode-eslint"
+  ]
+}

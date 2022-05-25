@@ -1,0 +1,15 @@
+.git/
+.husky/
+.idea/
+.next/
+.nuget/
+.swc/
+.vscode/
+coverage/
+dist/
+cypress/reports/
+cypress/videos/
+html-report/
+node_modules/
+public/
+pnpm-lock.yaml

@@ -1,8 +1,8 @@
 import React, { Suspense, useState } from "react";
 import { NavLink } from "react-router-dom";
 import PageLoader from "../components/page-loader";
-import LeftNavigation from "@shared/components/left-navigation";
-import Sidemenu from "./sidemenu";
+//import LeftNavigation from "@shared/components/left-navigation";
+//import Sidemenu from "./sidemenu";
 import Footer from "./footer";
 
 import '../assets/styles/main.scss';

@@ -1,0 +1,30 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "plugins": ["stylelint-scss", "stylelint-order"],
+  "rules": {
+    "string-quotes": "single",
+    "font-family-name-quotes": "always-unless-keyword",
+    "selector-id-pattern": [
+      "^.([a-z][a-z0-9]*)(-+[a-z0-9]+)*((__([a-z][a-z0-9]*)(-+[a-z0-9]+)*)?)$",
+      {
+        "message": "Selector should use lowercase and separate words with either hyphens, double hyphens, and/or double underscores (selector-id-pattern)"
+      }
+    ],
+    "selector-class-pattern": [
+      "^.([a-z][a-z0-9]*)(-+[a-z0-9]+)*((__([a-z][a-z0-9]*)(-+[a-z0-9]+)*)?)$",
+      {
+        "message": "Selector should use lowercase and separate words with either hyphens, double hyphens, and/or double underscores (selector-class-pattern)"
+      }
+    ],
+    "scss/dollar-variable-pattern": [
+      "^.([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
+      {
+        "ignore": "global",
+        "message": "local variables must be kebab case"
+      }
+    ],
+    "scss/at-rule-no-unknown": true,
+    "order/order": ["custom-properties", "declarations", "rules"],
+    "order/properties-alphabetical-order": true
+  }
+}

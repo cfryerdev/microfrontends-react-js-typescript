@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "disableSourceOfProjectReferenceRedirect": true,
+    "composite": true
+  },
+  "references": [
+    {
+      "path": "./host"
+    },
+    {
+      "path": "./shared"
+    },
+    {
+      "path": "./remotes/home"
+    },
+    {
+      "path": "./remotes/sample"
+    },
+    {
+      "path": "./remotes/profile"
+    }
+  ],
+  "files": []
+}

@@ -1,11 +1,18 @@
 {
-  "name": "microfrontends-nextjs-react",
-  "version": "1.0.0",
-  "description": "Microfrontends using a NextJS Host and React remotes",
+  "name": "microfrontends-react",
+  "version": "2.0.0",
+  "description": "Microfrontends using React and Module Federation",
+  "private": true,
+  "engines": {
+    "node": ">=14",
+    "npm": "please-use-pnpm",
+    "pnpm": ">=7"
+  },
   "scripts": {
-    "install": "concurrently \"npm run install:host\" \"npm run install:home\" \"npm run install:profile\" \"npm run install:sample\" \"npm run install:service\"",
-    "start": "concurrently \"npm run start:home\" \"npm run start:profile\" \"npm run start:sample\" \"npm run start:service\" \"npm run start:host\"",
+    "start-ws": "concurrently \"npm start --workspace=host\" \"npm start --workspace=remotes/home\" \"npm start --workspace=remotes/sample\" \"npm start --workspace=remotes/profile\"",
+    "test": "npm test --workspaces --if-present",
     "build": "",
+    "start": "concurrently \"npm run start:home\" \"npm run start:profile\" \"npm run start:sample\" \"npm run start:host\"",
     "install:host": "cd host && npm install",
     "start:host": "cd host && npm start",
     "build:host": "cd host && npm run build",
@@ -18,21 +25,74 @@
     "install:profile": "cd remotes && cd profile && npm install",
     "start:profile": "cd remotes && cd profile && npm start",
     "build:profile": "cd remotes && cd profile && npm run build",
-    "install:service": "cd service && npm install",
-    "start:service": "cd service && npm start",
-    "container:build": "docker build -t cfryerdev/microsite-example:latest .",
-    "container:run": "docker run -p 8080:80 --name local-dev cfryerdev/microsite-example"
+    "create-remote": "node .scripts/create-remote.js --appname $npm_config_appname --port $npm_config_port",
+    "container:build": "docker build -t cfryerdev/microfrontend-example:latest .",
+    "container:run": "docker run -p 8080:80 --name local-dev cfryerdev/microfrontend-example",
+    "format": "prettier --check . --config prettier.config.js",
+    "format:fix": "prettier --write . --config prettier.config.js",
+    "lint": "eslint . -f table",
+    "lint:fix": "eslint --fix . -f table",
+    "stylelint": "stylelint **/*.scss",
+    "stylelint:fix": "stylelint **/*.scss --fix",
+    "clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "incremental:build": "tsc -b ."
   },
   "keywords": [],
   "author": "Chris Fryer <cfryerdev@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "concurrently": "^7.0.0"
+    "react": "^18.0.0",
+		"react-dom": "^18.0.0",
+		"react-router": "^6.3.0",
+		"react-router-dom": "^6.3.0"
   },
   "devDependencies": {
-    "style-loader": "^3.3.1"
+    "concurrently": "^7.0.0",
+    "style-loader": "^3.3.1",
+    "workspaces-run": "^1.0.1",
+    "webpack": "5.72.0",
+    "typescript": "4.6.4",
+    "@babel/core": "7.17.10",
+    "@babel/plugin-transform-runtime": "7.17.10",
+    "@babel/preset-env": "7.17.10",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "7.16.7",
+    "@babel/runtime": "7.17.9",
+    "babel-loader": "8.2.3",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-formatter-table": "^7.32.1",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.2.2",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "stylelint": "^14.8.2",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.2.0",
+    "postcss": "^8.4.13",
+    "postcss-loader": "^6.2.1",
+    "postcss-preset-env": "^7.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "prettier": "^2.6.2",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "validate-branch-name": "^1.3.0"
+  },
+  "validate-branch-name": {
+    "pattern": "(feature|wip|fix|refactor|release|hotfix)\\/(S-\\d+-)[a-zA-Z-]+",
+    "errorMsg": "Avoid branches with invalid naming conventions. See README."
   },
   "workspaces": [
-    "shared"
+    "shared",
+    "host",
+    "service",
+    "remotes/home",
+    "remotes/profile",
+    "remotes/sample"
   ]
 }

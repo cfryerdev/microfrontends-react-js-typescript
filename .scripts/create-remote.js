@@ -4,12 +4,9 @@ const yaml = require('js-yaml');
 const shell = require('shelljs');
 const minimist = require('minimist');
 
-// git clone https://github.com/cfryerdev/microfrontends-remote-react-typescript
-// remove .git folder
-// replace all instances of {REPLACE_NAME} with appname
-// replace all instances of {REPLACE_PORT} with port
+const githubrepo = "https://github.com/cfryerdev/microfrontends-remote-react-typescript";
+
 // run npm i
-// Add to pnmp-workspaces.yaml
 // Add name and local host port to /host/.env
 // Create a route and lazy load new remote by name
 // Add start and install commands to package.json
@@ -22,17 +19,44 @@ process.chdir('../');
 
 /* ================================================= */
 
-const updateWorkspaces = () => {};
+// const updateWorkspaces = () => {
+//     const filePath = `../../package.json`;
+//     const packageJsonData = fs.readFileSync(filePath, 'utf-8');
+//     const packageJson = JSON.parse(packageJsonData);
+//     if (!packageJson.workspaces.includes(apppath)) {
+//         packageJson.workspaces.push(apppath);
+//     }
+//     fs.writeFileSync(filePath, JSON.stringify(packageJson, null, 2), 'utf-8');
+// };
+
+const updateWorkspaces = () => {
+    const filePath = `../pnpm-workspace.yaml`;
+    const workspaceData = fs.readFileSync(filePath, 'utf-8');
+    const workspace = yaml.load(workspaceData);
+    if (!workspace.packages.includes(`remotes/${remotename}`)) {
+        workspace.packages.push(`remotes/${remotename}`);
+    }
+    const data = yaml.dump(workspace);
+    fs.writeFileSync(filePath, data, 'utf-8');
+};
+
+
+const updateTypescriptPaths = () => {
+    const filePath = `../../tsconfig.json`;
+    const raw = fs.readFileSync(filePath, 'utf-8');
+    const jsonData = JSON.parse(raw);
+    const ref = jsonData.references.filter(ref=> ref.path === `./${apppath}`);
+    if (ref === null || ref === undefined || ref.length === 0) {
+        jsonData.references.push({ path: `./${apppath}` });
+    }
+    fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2), 'utf-8');
+};
 
 const cloneRemoteTemplate = () => {
     shell.config.silent = true;
     shell.cd(apppath)
-    shell.exec('git clone https://github.com/cfryerdev/microfrontends-remote-react-typescript .');
+    shell.exec(`git clone ${githubrepo} .`);
     shell.exec('rm -r .git');
-};
-
-const updatePackageJson = () => {
-
 };
 
 const executeReplaceVariables = () => {
@@ -91,5 +115,11 @@ cloneRemoteTemplate();
 
 console.log(`-- Updating remote template name and port...`);
 executeReplaceVariables();
+
+console.log(`-- Updating npm workspaces...`);
+updateWorkspaces();
+
+console.log(`-- Updating tsconfig refrences...`);
+updateTypescriptPaths();
 
 console.log('Finished!');
