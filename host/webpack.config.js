@@ -15,8 +15,11 @@ function getRemotesFromConfiguration () {
 	var remotes = Object.entries(env.parsed);
 	remotes.forEach((rem) => { 
 		var name = rem[0].toLowerCase();
-		var url = rem[1];
-		obj[name] = `${name}@${url}`; });
+		if (name.startsWith('remote_')) {
+			var url = rem[1];
+			obj[name] = `${name}@${url}`;
+		}
+	});
 	return obj;
 };
 
