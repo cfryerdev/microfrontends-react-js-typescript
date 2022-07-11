@@ -3,9 +3,7 @@ import React from 'react';
 const Sample = ({ id }) => (
   <div>
     <ol className="breadcrumb">
-      <li className="breadcrumb-item">
-        <a href="/">Home</a>
-      </li>
+      <li className="breadcrumb-item">Home</li>
       <li className="breadcrumb-item active">Sample</li>
     </ol>
     <h2>Remote App - Sample</h2>
