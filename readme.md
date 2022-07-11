@@ -26,11 +26,6 @@ For now we will keep the structure loose and simple:
 ├─── 📁 shared              > Packages and components shared across remotes
 ```
 
-
-## Diagram
-
- ![Diagram](.docs/Diagram-Micro-Frontends.png)
-
 ## What are hosts and remotes?
 
 When we talk about micro-frontends or micro-sites, we often use words like HOST and REMOTE. A remote is a single page react application. A host is a parent application that ties all remotes together.
@@ -51,6 +46,19 @@ $ npm start
 ```
 
 Now you may visit `http://localhost:3000` in a browser.
+
+## Architecture
+
+![Diagram](.docs/Microfrontends.png)
+
+## Typical Layout
+
+![Diagram](.docs/Microfrontends_Visual.png)
+
+## Typical Workflow
+
+ ![Diagram](.docs/Diagram-Micro-Frontends.png)
+
 
 ## What is this shared directory?
 
