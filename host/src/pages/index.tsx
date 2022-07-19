@@ -3,6 +3,7 @@ import Layout from "../layout";
 
 const IndexPage = () => {
   return (
+
     <Layout>
       <ol className="breadcrumb">
         <li className="breadcrumb-item active">Home</li>
@@ -11,7 +12,7 @@ const IndexPage = () => {
         <h1 className="display-3 mb-4 mt-0">Welcome</h1>
         <div className="lead">
           This is an example application using nextjs as a host, and create react application
-          as remotes. These are dynamically resolved in each next page route, and defined either 
+          as remotes. These are dynamically resolved in each next page route, and defined either
           ssr true/false.
         </div>
         <div className="mt-4 mb-4">
@@ -23,6 +24,7 @@ const IndexPage = () => {
         </div>
       </div>
     </Layout>
+
   )
 }
 

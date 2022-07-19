@@ -10,13 +10,15 @@ if (env && env.parsed) {
 	console.log('environment config:', env.parsed);
 }
 
-function getRemotesFromConfiguration () {
+function getRemotesFromConfiguration() {
 	let obj = {};
 	var remotes = Object.entries(env.parsed);
-	remotes.forEach((rem) => { 
+	remotes.forEach((rem) => {
 		var name = rem[0].toLowerCase();
 		var url = rem[1];
-		obj[name] = `${name}@${url}`; });
+		obj[name] = `${name}@${url}`;
+	});
+	console.log(obj);
 	return obj;
 };
 
@@ -24,7 +26,7 @@ module.exports = (env, argv) => {
 	return {
 		entry: "./src/index.ts",
 		output: {
-			publicPath: '/'
+			publicPath: 'http://localhost:3000/'
 		},
 		mode: process.env.NODE_ENV || "development",
 		devServer: {
@@ -39,15 +41,26 @@ module.exports = (env, argv) => {
 			}
 		},
 		module: {
-			rules: [ 
+			rules: [
 				{ test: /\.(js|jsx|tsx|ts)$/, loader: "ts-loader", exclude: /node_modules/ },
-				{ test: /\.css$/, use: ["style-loader", "css-loader"]}
+				{ test: /\.css$/, use: ["style-loader", "css-loader"] }
 			],
 		},
 		plugins: [
 			new ModuleFederationPlugin({
 				name: "container",
-				remotes: getRemotesFromConfiguration(),
+				filename: "remoteEntry.js",
+				exposes: {
+					"./store": "./src/components/store"
+				},
+				remotes: [{
+					remote_home: 'remote_home@http://localhost:3001/remote.js',
+					remote_profile: 'remote_profile@http://localhost:3003/remote.js',
+					remote_sample: 'remote_sample@http://localhost:3002/remote.js',
+					container: 'container@http://localhost:3000/remoteEntry.js',
+					ai_instrumentation_key: 'ai_instrumentation_key@'
+
+				}],
 				shared: {
 					...pkg.dependencies,
 					react: { singleton: true, eager: true, requiredVersion: pkg.dependencies["react"] },

@@ -31,21 +31,23 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'remote_sample',
-      library: { type: 'var', name: 'remote_sample' },
       filename: 'remote.js',
+      remotes: {
+        container: "container@http://localhost:3000/remoteEntry.js",
+      },
       exposes: {
         './Application': './src/_app',
       },
       shared: {
-				'react': {
-					singleton: true,
-					requiredVersion: deps.react,
-				},
-				'react-dom': {
-					singleton: true,
-					requiredVersion: deps['react-dom'],
-				},
-			},
+        'react': {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        'react-dom': {
+          singleton: true,
+          requiredVersion: deps['react-dom'],
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
