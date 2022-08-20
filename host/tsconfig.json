@@ -19,5 +19,7 @@
 		"noEmit": false,
 		"jsx": "react-jsx"
 	},
-	"include": ["src", "../shared/contexts/account-context.tsx"]
+	"include": [
+        "./src/**/*"
+    ],
 }

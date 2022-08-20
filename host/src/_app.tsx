@@ -1,16 +1,18 @@
 import { BrowserRouter } from "react-router-dom";
+import TelemetryListener from "./components/telemetry/TelemetryListener";
 import Routing from "./_routing";
 import { ErrorBoundary } from "react-error-boundary";
 import { createContext } from "react";
-import errorFallback from "./components/error-fallback";
 
 
 const HostRouter = () => (
-  <BrowserRouter>
-    <ErrorBoundary FallbackComponent={errorFallback}>
+
+  <>
+    <TelemetryListener />
+    <BrowserRouter>
       <Routing />
-    </ErrorBoundary>
-  </BrowserRouter>
+    </BrowserRouter>
+  </>
 );
 
 export default HostRouter;
