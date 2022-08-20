@@ -10,10 +10,10 @@ if (env && env.parsed) {
 	console.log('environment config:', env.parsed);
 }
 
-function getRemotesFromConfiguration () {
+function getRemotesFromConfiguration() {
 	let obj = {};
 	var remotes = Object.entries(env.parsed);
-	remotes.forEach((rem) => { 
+	remotes.forEach((rem) => {
 		var name = rem[0].toLowerCase();
 		if (name.startsWith('remote_')) {
 			var url = rem[1];
@@ -38,13 +38,14 @@ module.exports = (env, argv) => {
 		resolve: {
 			extensions: [".ts", ".tsx", ".js", ".jsx"],
 			alias: {
-				'@shared': path.resolve(__dirname, '../shared')
+				'@shared': path.resolve(__dirname, '../shared'),
+
 			}
 		},
 		module: {
-			rules: [ 
+			rules: [
 				{ test: /\.(js|jsx|tsx|ts)$/, loader: "ts-loader", exclude: /node_modules/ },
-				{ test: /\.(css|scss|sass)$/, use: ["style-loader", "css-loader"]}
+				{ test: /\.(css|scss|sass)$/, use: ["style-loader", "css-loader"] }
 			],
 		},
 		plugins: [
@@ -54,6 +55,7 @@ module.exports = (env, argv) => {
 				shared: {
 					...pkg.dependencies,
 					react: { singleton: true, eager: true, requiredVersion: pkg.dependencies["react"] },
+
 					"react-dom": {
 						singleton: true,
 						eager: true,
