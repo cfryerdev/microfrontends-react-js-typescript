@@ -38,15 +38,15 @@ module.exports = {
         './Application': './src/_app',
       },
       shared: {
-				'react': {
-					singleton: true,
-					requiredVersion: deps['react'],
-				},
-				'react-dom': {
-					singleton: true,
-					requiredVersion: deps['react-dom'],
-				},
-			},
+        'react': {
+          singleton: true,
+          requiredVersion: deps['react'],
+        },
+        'react-dom': {
+          singleton: true,
+          requiredVersion: deps['react-dom'],
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

@@ -4,7 +4,11 @@ import Layout from "../../layout";
 const IndexPage = () => {
   return (
     <Layout>
-      Example page.
+      <ol className="breadcrumb">
+        <li className="breadcrumb-item">Home</li>
+        <li className="breadcrumb-item active">Example</li>
+      </ol>
+      Example page in the host, this is not a remote.
     </Layout>
   )
 }

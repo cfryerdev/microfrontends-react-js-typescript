@@ -1,4 +1,5 @@
 const env = require('dotenv').config();
+const DotenvPlugin = require('dotenv-webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
@@ -9,19 +10,6 @@ require("dotenv").config({ path: "./.env" });
 if (env && env.parsed) {
 	console.log('environment config:', env.parsed);
 }
-
-function getRemotesFromConfiguration () {
-	let obj = {};
-	var remotes = Object.entries(env.parsed);
-	remotes.forEach((rem) => { 
-		var name = rem[0].toLowerCase();
-		if (name.startsWith('remote_')) {
-			var url = rem[1];
-			obj[name] = `${name}@${url}`;
-		}
-	});
-	return obj;
-};
 
 module.exports = (env, argv) => {
 	return {
@@ -42,15 +30,18 @@ module.exports = (env, argv) => {
 			}
 		},
 		module: {
-			rules: [ 
+			rules: [
 				{ test: /\.(js|jsx|tsx|ts)$/, loader: "ts-loader", exclude: /node_modules/ },
-				{ test: /\.(css|scss|sass)$/, use: ["style-loader", "css-loader"]}
+				{ test: /\.(css|scss|sass)$/, use: ["style-loader", "css-loader"] }
 			],
 		},
 		plugins: [
+			new DotenvPlugin({
+				systemvars: true,
+			}),
 			new ModuleFederationPlugin({
 				name: "container",
-				remotes: getRemotesFromConfiguration(),
+				remotes: [], // Loaded dynamically now via api ;)
 				shared: {
 					...pkg.dependencies,
 					react: { singleton: true, eager: true, requiredVersion: pkg.dependencies["react"] },
@@ -63,6 +54,7 @@ module.exports = (env, argv) => {
 			}),
 			new HtmlWebpackPlugin({
 				template: "./public/index.html",
+				favicon: './public/favicon.ico',
 			}),
 		],
 	};

@@ -1,5 +1,5 @@
 export default () => {
     return (
-      <>Loading...</>
+      <>Loading page remote file...</>
     );
 };

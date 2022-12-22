@@ -1,5 +1,4 @@
 @import 'bootstrap.scss';
-@import 'sidebar.scss';
 
 /* Turn off right justify title in mobile */
 .navbar-brand {
@@ -140,3 +139,27 @@
   .search-container .exec-search:hover {
     color: #000;
   }
+
+
+    .nav-tabs {
+      background: #777;
+      border-bottom: 1px solid #777;
+    }
+    
+    .nav-tabs .nav-link {
+      border: 0px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    
+    .nav-tabs .nav-link.active, 
+    .nav-tabs .nav-item.show .nav-link {
+      background: #666;
+      background-color: none;
+    }
+    
+    .nav-tabs .nav-link:hover, 
+    .nav-tabs .nav-link:focus {
+      background: #555;
+    }
+  

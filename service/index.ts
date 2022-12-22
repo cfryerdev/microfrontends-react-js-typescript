@@ -1,20 +1,28 @@
 import express, { Request, Response } from "express";
-import bodyParser from "body-parser";
+import cors from 'cors';
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./config/swagger";
 import HealthController from "./controllers/health";
 import VersionController from "./controllers/version";
+import RemotesController from "./controllers/remotes";
 
-const port = process.env.PORT || 3010;
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+const port = process.env.PORT || 8080;
 
 (async () => {
   try {
     const app = express();
 
-    app.use(bodyParser.json());
+    app.set("trust proxy", 1);
+    app.use(cors());
+    app.use(express.urlencoded({ extended: false }));
+    app.use(express.json());
 
     app.use(VersionController);
     app.use(HealthController);
+    app.use(RemotesController);
     
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

@@ -34,7 +34,7 @@ module.exports = {
 			filename: 'remote.js',
 			exposes: {
 				'./Application': './src/_app',
-      			},
+			},
 			shared: {
 				...deps,
 				'react': {

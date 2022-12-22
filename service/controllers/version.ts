@@ -1,6 +1,5 @@
 import express, { Request, Response } from "express";
 import packageJson from "../../package.json";
-
 const router = express.Router();
 
 /**

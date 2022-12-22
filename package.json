@@ -19,9 +19,7 @@
     "start:profile": "cd remotes && cd profile && npm start",
     "build:profile": "cd remotes && cd profile && npm run build",
     "install:service": "cd service && npm install",
-    "start:service": "cd service && npm start",
-    "container:build": "docker build -t cfryerdev/microsite-example:latest .",
-    "container:run": "docker run -p 8080:80 --name local-dev cfryerdev/microsite-example"
+    "start:service": "cd service && npm start"
   },
   "keywords": [],
   "author": "Chris Fryer <cfryerdev@gmail.com>",
