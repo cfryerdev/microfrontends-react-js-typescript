@@ -15,7 +15,6 @@ const port = process.env.PORT || 8080;
   try {
     const app = express();
 
-    app.set("trust proxy", 1);
     app.use(cors());
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
@@ -25,8 +24,6 @@ const port = process.env.PORT || 8080;
     app.use(RemotesController);
     
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-    app.use(express.static('public'));
 
     app.listen(port, (err?: any) => {
       if (err) throw err;

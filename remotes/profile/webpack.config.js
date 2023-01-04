@@ -3,21 +3,28 @@ const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 const deps = require("./package.json").dependencies;
 
+const port = 3003;
+const remoteName = 'profile';
+
 module.exports = {
 	entry: "./src/index.ts",
 	mode: "development",
 	devServer: {
-		port: 3003,
+		headers: {
+		  "Access-Control-Allow-Origin": "*",
+		  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+		},
+		port: port,
 		open: false,
 	},
 	resolve: {
-		extensions: [".ts", ".tsx", ".js"],
+		extensions: [".ts", ".tsx", ".js", ".jsx"],
 		alias: {
 			'@shared': path.resolve(__dirname, '../../shared')
 		}
 	},
 	output: {
-		publicPath: 'http://localhost:3003/',
+		publicPath: `http://localhost:${port}/`,
 	},
 	module: {
 		rules: [
@@ -30,10 +37,11 @@ module.exports = {
 	},
 	plugins: [
 		new ModuleFederationPlugin({
-			name: "remote_profile",
+			name: `remote_${remoteName}`,
 			filename: 'remote.js',
 			exposes: {
 				'./Application': './src/_app',
+				'./Health': './src/_health',
 			},
 			shared: {
 				...deps,
