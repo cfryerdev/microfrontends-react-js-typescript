@@ -97,6 +97,17 @@ const fetchRemoteConfiguration = async (baseUrl: string, remoteName: string) => 
     }
 };
 
+const fetchRemoteFallback = async (url: string) => {
+    try {
+        const response = await fetch(url);
+        const result = response.json();
+        return result;
+    } catch (error) {
+        console.log({ error });
+        throw error;
+    }
+};
+
 /*
     Dynamically import a remote module using Webpack's loading mechanism:
     https://webpack.js.org/concepts/module-federation/
@@ -111,7 +122,7 @@ const importRemote = async <T>({
 }: ImportRemoteOptions): Promise<T> => {
     if (!window[scope]) {
         const remoteDetails = remoteUrlFallback
-            ? remoteUrlFallback
+            ? { value: remoteUrlFallback }
             : await fetchRemoteConfiguration(configApiUrl, remoteName);
 
         // Load the remote and initialize the share scope if it's empty
@@ -136,12 +147,6 @@ const importRemote = async <T>({
             initContainer(window[scope]),
             window[scope].get(module.startsWith('./') ? module : `./${module}`),
         ]);
-
-        try {
-            console.debug('setRemoteName', remoteDetails);
-            // eslint-disable-next-line no-empty
-        } catch {}
-
         return moduleFactory();
     } else {
         const moduleFactory = await window[scope].get(

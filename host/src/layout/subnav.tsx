@@ -7,7 +7,13 @@ export default function Page() {
                 <NavLink className="nav-link" to="/">Root</NavLink>
             </li>
             <li className="nav-item" role="presentation">
+                <NavLink className="nav-link" to="/health">Health</NavLink>
+            </li>
+            <li className="nav-item" role="presentation">
                 <NavLink className="nav-link" to="/sample/123456">Sample</NavLink>
+            </li>
+            <li className="nav-item" role="presentation">
+                <NavLink className="nav-link" to="/home">Home</NavLink>
             </li>
             <li className="nav-item" role="presentation">
                 <NavLink className="nav-link" to="/example">Example</NavLink>

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Layout from "../../layout";
 
-const IndexPage = () => {
+const ExamplePage = () => {
   return (
     <Layout>
       <ol className="breadcrumb">
@@ -13,4 +13,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage;
+export default ExamplePage;

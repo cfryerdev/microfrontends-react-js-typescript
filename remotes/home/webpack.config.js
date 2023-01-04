@@ -1,43 +1,59 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
-const deps = require('./package.json').dependencies
+const deps = require('./package.json').dependencies;
+
+const port = 3001;
+const remoteName = 'home';
 
 module.exports = {
-  entry: './src/index',
+  entry: './src/index.js',
   mode: 'development',
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS"
     },
-    port: 3001,
+		open: false,
+    port: port,
+  },
+  resolve: {
+    extensions: [".js", ".jsx"],
+    alias: {
+      '@shared': path.resolve(__dirname, '../../shared')
+    }
   },
   output: {
-    filename: 'remote-home.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: 'http://localhost:3001/',
+    publicPath: `auto`,
+    clean: true,
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
           presets: ['@babel/preset-react'],
         },
       },
+      {
+        test: /\.(jpg|png|jpeg|svg)/,
+        type: 'asset/resource',
+        exclude: /node_modules/,
+      },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'remote_home',
-      library: { type: 'var', name: 'remote_home' },
+      name: `remote_${remoteName}`,
       filename: 'remote.js',
       exposes: {
         './Application': './src/_app',
+        './Health': './src/_health',
       },
       shared: {
+				...deps,
         'react': {
           singleton: true,
           requiredVersion: deps['react'],
