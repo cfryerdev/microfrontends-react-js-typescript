@@ -10,7 +10,6 @@ export default ({ children }: LayoutProps) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-primary">
-        <i className="fas fa-bars fa-lg sidemenu-toggle-icon"></i>
         <NavLink className="navbar-brand" to="/" style={{ color: '#fff' }}>Custom Header</NavLink>
       </nav>
       <div className="container-fluid p-4">{ children }</div>

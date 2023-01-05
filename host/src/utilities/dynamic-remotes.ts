@@ -23,13 +23,13 @@ declare global {
 interface ImportRemoteOptions {
     /** The url used for getting remote configuration from an api. */
     configApiUrl: string;
-    /** The name of the variable in Azure App Config, a prefix of Remote will be used. */
+    /** The name of the variable in BFF App Config, a prefix of Remote will be used. */
     remoteName: string;
     /** The webpack remote name being exposed, eg: "faq" */
     scope: string;
     /** The module (component) being exposed, eg: "Application" */
     module: string;
-    /** The URL for the remote to use, short circuits Azure App Config */
+    /** The URL for the remote to use, short circuits BFF App Config */
     remoteUrlFallback?: string | null | undefined;
     bustRemoteEntryCache?: boolean;
 }

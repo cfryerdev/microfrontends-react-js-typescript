@@ -8,8 +8,9 @@ import '../assets/styles/main.scss';
 
 const Header = () => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-    <i className="fas fa-bars fa-lg sidemenu-toggle-icon"></i>
-    <NavLink to="/" className="navbar-brand">Microfrontend Site</NavLink>
+    <NavLink to="/" className="navbar-brand">
+      <i className="fa-solid fa-sitemap"></i> Microfrontend Site
+    </NavLink>
   </nav>
 );
 

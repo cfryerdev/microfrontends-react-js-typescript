@@ -1,165 +1,24 @@
 @import 'bootstrap.scss';
 
-/* Turn off right justify title in mobile */
-.navbar-brand {
-    margin-right: auto !important;
-}
-  
-.container,
-.container-fluid {
-    margin-top: 20px;
+
+.nav-tabs {
+  background: #777;
+  border-bottom: 1px solid #777;
 }
 
-/* Body */
+.nav-tabs .nav-link {
+  border: 0px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
 
-.search-body-blocker.open {
-    background: #000;
-    z-index: 1;
-    position: fixed;
-    inset: 0px;
-    opacity: 0.15;
-    top: 72px;
-  }
-  
-  /* Navigation */
-  
-  nav .nav-item {
-    cursor: pointer;
-  }
-  
-  /* Sidebar */
-  
-  .sidemenu {
-    width: 250px;
-    background: #222;
-    height: 100%;
-  }
-  
-  .sidemenu nav.navbar {
-    display: block;
-    text-align: right;
-  }
-  
-  .sidemenu-toggle-icon {
-    color: #fff;
-    margin-left: 10px;
-    margin-right: 20px;
-    cursor: pointer;
-  }
-  
-  .sidemenu .link {
-    padding: 8px 5px 8px 10px;
-    display: block;
-    width: 100%;
-    text-transform: uppercase;
-    font-size: 12px;
-  }
-  
-  .sidemenu .link:hover {
-    text-decoration: none;
-    background-color: #303030;
-    border-right: 5px solid #444;
-  }
-  
-  .sidemenu .profile-card {
-    margin-bottom: 10px;
-    border-radius: 0px;
-  }
-  
-  .sidemenu .profile-card .card-subtitle{
-    font-size: 12px;
-  }
-  
-  .sidemenu .profile-card .card-link{
-    font-size: 14px;
-  }
-  
-  @media screen and (min-width: 799px) {
-    .sidemenu {
-      background: #222;
-    }
-  
-    .sidemenu-toggle-icon {
-      display: none;
-    }
-  
-    .sidemenu nav.navbar {
-      height: 71px;
-      background-color: #375a7f;
-    }
-  }
-  
-  /* Search */
-  
-  .search-container {
-    background: #375a7f;
-    height: 72px;
-    padding: 15px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    border-bottom: 1px solid #000;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  .search-container input {
-    border: 0;
-    height: 40px;
-    padding: 0 55px 0 45px;
-    font-size: 16px;
-    border-radius: 2px;
-    background-color: #efefef;
-    width: 100%;
-  }
-  
-  .search-container input::placeholder {
-    color: #888;
-  }
-  
-  .search-container .close-search {
-    position: absolute;
-    cursor: pointer;
-    color: #777;
-    top: 29px;
-    left: 30px;
-  }
-  
-  .search-container .close-search:hover {
-    color: #000;
-  }
-  
-  .search-container .exec-search {
-    color: #777;
-    position: absolute;
-    top: 24px;
-    right: 30px;
-  }
-  
-  .search-container .exec-search:hover {
-    color: #000;
-  }
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  background: #666;
+  background-color: none;
+}
 
-
-    .nav-tabs {
-      background: #777;
-      border-bottom: 1px solid #777;
-    }
-    
-    .nav-tabs .nav-link {
-      border: 0px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-    
-    .nav-tabs .nav-link.active, 
-    .nav-tabs .nav-item.show .nav-link {
-      background: #666;
-      background-color: none;
-    }
-    
-    .nav-tabs .nav-link:hover, 
-    .nav-tabs .nav-link:focus {
-      background: #555;
-    }
-  
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+  background: #555;
+}

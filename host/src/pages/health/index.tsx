@@ -53,7 +53,9 @@ const HealthPage = () => {
   return (
     <Layout>
       <ol className="breadcrumb">
-        <li className="breadcrumb-item">Application Health Information</li>
+        <li className="breadcrumb-item">
+          <i className="fa-solid fa-book-medical"></i> Application Health Information
+        </li>
       </ol>
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-start', alignContent: 'space-between' }}>
         <RemoteHealthComponent 

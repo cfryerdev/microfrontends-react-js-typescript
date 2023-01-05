@@ -1,71 +1,62 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
-const path = require('path');
-const deps = require('./package.json').dependencies;
+const DotenvPlugin = require('dotenv-webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const sharedDependencies = require('../../shared/package.json').dependencies;
+const dependencies = require('./package.json').dependencies;
+const {
+  importHostEnv,
+  getDefaultExposed,
+  getSharedModules,
+  getDefaultSharedModules,
+  getDefaultResolve,
+  createDevServer,
+  getRule_Javascript,
+  getRule_Assets,
+  getRule_StylesModule,
+  getDefaultOutput
+} = require('../../.scripts/webpack-utils');
 
 const port = 3001;
 const remoteName = 'home';
 
 module.exports = {
+  mode: process.env.NODE_ENV || 'development',
   entry: './src/index.js',
-  mode: 'development',
-  devServer: {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS"
-    },
-		open: false,
-    port: port,
-  },
+  devServer: createDevServer(port),
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
       '@shared': path.resolve(__dirname, '../../shared')
     }
   },
-  output: {
-    publicPath: `auto`,
-    clean: true,
-  },
+  output: getDefaultOutput(),
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          presets: ['@babel/preset-react'],
-        },
-      },
-      {
-        test: /\.(jpg|png|jpeg|svg)/,
-        type: 'asset/resource',
-        exclude: /node_modules/,
-      },
+      getRule_Javascript(),
+      getRule_Assets(),
+      getRule_StylesModule(MiniCssExtractPlugin.loader),
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
       name: `remote_${remoteName}`,
       filename: 'remote.js',
-      exposes: {
-        './Application': './src/_app',
-        './Health': './src/_health',
-      },
+      exposes: getDefaultExposed(),
       shared: {
-				...deps,
-        'react': {
-          singleton: true,
-          requiredVersion: deps['react'],
-        },
-        'react-dom': {
-          singleton: true,
-          requiredVersion: deps['react-dom'],
-        },
+				...getSharedModules(dependencies, false, getDefaultSharedModules()),
+        ...getSharedModules(sharedDependencies),
       },
+    }),
+    new DotenvPlugin({
+      systemvars: true,
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+  }),
   ],
 };
