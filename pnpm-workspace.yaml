@@ -1,0 +1,6 @@
+packages:
+  - host
+  - shared
+  - remotes/home
+  - remotes/sample
+  - remotes/profile
