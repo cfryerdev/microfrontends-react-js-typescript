@@ -56,7 +56,7 @@ A BFF can be responsible for handling much of the business logic around fetching
 Ive really worked hard to keep this extremely simple to stand up.
 
 ```bash
-$ pnpm i
+$ pnpm install
 $ pnpm start
 ```
 
