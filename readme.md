@@ -55,6 +55,13 @@ A BFF can be responsible for handling much of the business logic around fetching
 ## Getting started
 Ive really worked hard to keep this extremely simple to stand up.
 
+First we need to install PNPM..
+```bash
+npm install -g pnpm
+```
+
+Now we are ready to start!
+
 ```bash
 $ pnpm install
 $ pnpm start
