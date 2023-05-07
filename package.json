@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Microfrontends using a NextJS Host and React remotes",
   "scripts": {
-    "start": "pnpm -r --no-bail --workspace-concurrency 100 start"
+    "start": "pnpm -r --reporter append-only --no-bail --workspace-concurrency 100 start"
   },
   "keywords": [],
   "author": "Chris Fryer <cfryerdev@gmail.com>",
