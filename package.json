@@ -1,6 +1,6 @@
 {
   "name": "microfrontends-react",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Microfrontends using a React Host and React Remotes",
   "scripts": {
     "start": "pnpm -r --reporter append-only --no-bail --workspace-concurrency 100 start"
