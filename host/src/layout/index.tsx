@@ -1,8 +1,9 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import PageLoader from "../components/page-loader";
 import Subnav from "./subnav";
 import Footer from "./footer";
+import { LogClient, LogListener, logConfig } from '@shared/logging';
 
 import '../assets/styles/main.scss';
 
@@ -17,24 +18,32 @@ interface LayoutProps {
   children: React.ReactNode
 };
 
-const mql = window.matchMedia(`(min-width: 800px)`);
-
 const Layout = ({ children }: LayoutProps) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [sidebarDocked, setSidebarDocked] = useState(mql.matches);
+  
+  const config = () => {
+		return {
+			...logConfig,
+			logGeneral: (detail) => { console.log('general', detail); },
+			logPageView: (detail) => { console.log('pageView', detail); },
+			logFetch: (detail) => { console.log('fetch', detail); },
+			debug: true,
+		};
+	};
 
-  mql.addListener(() => {
-    setSidebarDocked(mql.matches);
-  });
+  useEffect(() => {
+		LogClient.logGeneral({ message: 'Hello World' });
+	}, [])
 
   return (
-    <Suspense fallback={<PageLoader />}>
-      <Header />
-      <Subnav />
-      <div className="container mt-4">{children}</div>
-      <Footer />
-    </Suspense>
+    <>
+      <LogListener config={config()} />
+      <Suspense fallback={<PageLoader />}>
+        <Header />
+        <Subnav />
+        <div className="container mt-4">{children}</div>
+        <Footer />
+      </Suspense>
+    </>
   );
 };
 
