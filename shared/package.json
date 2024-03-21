@@ -3,12 +3,23 @@
   "version": "1.0.0",
   "scripts": {},
   "dependencies": {
-    "@microsoft/applicationinsights-react-js": "^3.3.3",
-    "@microsoft/applicationinsights-web": "^2.8.3",
-    "react": "^18.0.0",
-    "react-router-dom": "^6.3.0"
-  },
+		"@microsoft/applicationinsights-react-js": "^17.1.0",
+		"@microsoft/applicationinsights-web": "^3.1.0",
+		"@tanstack/query-core": "^5.24.1",
+		"@tanstack/react-query": "^5.24.1",
+		"jotai": "^2.6.4",
+		"jotai-tanstack-query": "^0.8.5",
+		"oidc-client": "~1.11.5",
+		"oidc-client-ts": "~3.0.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.22.2",
+		"uuid": "^9.0.1"
+	},
   "devDependencies": {
-    "@types/react": "^17.0.40"
-  }
+		"@types/react": "^18.2.61",
+		"@types/react-dom": "^18.2.19",
+		"@types/uuid": "^9.0.8",
+		"typescript": "^5.3.3"
+	}
 }

@@ -2,7 +2,8 @@ import React from 'react';
 import { Helmet } from "react-helmet";
 
 
-const App = () => (
+const App = () => {
+  return (
   <>
     <Helmet>
       <title>Microfrontends | Home</title>
@@ -17,5 +18,6 @@ const App = () => (
     </div>
   </>
 );
+}
 
 export default App;

@@ -1,0 +1,34 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": ".",
+		"composite": true,
+		"declaration": true,
+		"declarationMap": true,
+		"emitDecoratorMetadata": true,
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"incremental": true,
+		"jsx": "react-jsx",
+		"lib": ["ESNext", "DOM"],
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"noEmit": false,
+		"paths": {
+			"@shared/*": ["./shared/*"],
+			"remote_home/Application": ["./remotes/home/src/app"],
+			"remote_sample/Application": ["./remotes/sample/src/app"]
+		},
+		"plugins": [{ "name": "typescript-plugin-css-modules" }],
+		"resolveJsonModule": true,
+		"skipDefaultLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"sourceMap": true,
+		"target": "ES2018"
+		// BUG - https://github.com/microsoft/TypeScript/issues/42873
+		// "preserveSymlinks": true
+	},
+	"include": ["jest.setup.ts"],
+	"exclude": ["**/node_modules", "**/.*/"]
+}

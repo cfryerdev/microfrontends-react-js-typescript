@@ -1,7 +1,6 @@
 # Microfrontends using Module Federation and React
 This is an example application using react (and webpack) as a host, and create react application as remotes. These are dynamically resolved in each page route, and defined either ssr true/false.
 
-
 ## What is a Microfrontend Architecture?
 
 Microfrontend architecture is an approach to breaking up your front-end into a set of independently deploy-able, loosely coupled applications and/or components. These applications are then assembled together to act as a single user experience, once deployed.

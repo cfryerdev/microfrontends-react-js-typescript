@@ -1,7 +1,18 @@
 {
   "name": "remote-home",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
+  "scripts": {
+    "start": "webpack-cli serve",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 3001",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+		"react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0"
+  },
   "devDependencies": {
     "@babel/core": "7.17.5",
     "@babel/preset-react": "7.16.7",
@@ -11,16 +22,5 @@
     "webpack": "5.76.1",
 		"webpack-cli": "5.0.1",
 		"webpack-dev-server": "4.12.0"
-  },
-  "scripts": {
-    "start": "webpack-cli serve",
-    "build": "webpack --mode production",
-    "serve": "serve dist -p 3001",
-    "clean": "rm -rf dist"
-  },
-  "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-helmet": "^6.1.0"
   }
 }
