@@ -4,9 +4,9 @@ import Footer from "@shared/components/footer-component.jsx";
 
 interface LayoutProps {
   children: React.ReactNode
-}
+};
 
-export default ({ children }: LayoutProps) => { 
+const CustomLayout = ({ children }: LayoutProps) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-primary">
@@ -23,3 +23,4 @@ export default ({ children }: LayoutProps) => {
     </>
   );
 }
+export default CustomLayout;
